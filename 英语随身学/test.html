@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.code.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.modal-content {
+   			 width: 500px;
+   			 he
+}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">菜单</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">英语随身学</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">英语字母</a></li>
+        <li><a href="#">英语音标</a></li>
+        <li><a href="#">音标学习</a></li>
+        <li><a href="#">话说音标</a></li>
+        <li><a href="#">在现测音标</a></li>
+        <li><a href="#">音标学习路线图</a></li>
+        <li><a href="#">自然拼读练习课件</a></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">学习笔记</a></li>
+          </ul>
+        </li>
+        <button style="line-height:35px;outline: none;"class="btn btn-link rightbtn hidden-xs" data-toggle="modal" data-target="#loginModal">
+			登陆<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+		</button>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- 登录模态框 -->
+	<div class="modal fade bs-example-modal-sm" id="loginModal"
+		tabindex="-1" role="ialog" aria-labelledby="loginModelTitle">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="loginModelTitle">
+						<span class="glyphicon glyphicon-user"></span> 账户登录
+					</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group" id="accountidbox">
+							<label for="accountid" id="accountidtitle"
+								class="col-sm-3 control-label">账户:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="accountid"
+									placeholder="请输入账户……">
+							</div>
+						</div>
+						<div class="form-group" id="accountpwdbox">
+							<label for="accountpwd" id="accountpwdtitle"
+								class="col-sm-3 control-label">密码:</label>
+							<div class="col-sm-9">
+								<input type="password" class="form-control" id="accountpwd"
+									placeholder="请输入密码……">
+							</div>
+						</div>
+						<div class="form-group" id="accountpwdbox">		
+							<label for="accountpwd" id="accountpwdtitle"
+								class="col-sm-3 control-label">验证码:</label>
+							<div class="col-sm-6">		
+							  <input type="text" class="form-control input-code" placeholder="验证码">
+							</div>
+							 <div class="col-sm-3"> 
+							 	<span class="code"  title='点击切换'></span>
+ 							</div>
+						</div>
+						<div class="form-group hidden" id="vercodebox"></div>
+						<div id="alertbox" role="alert"></div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button style="float: left;"class="btn btn-link rightbtn hidden-xs" data-toggle="modal" data-target="#regModal">
+						注册 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" id="dologinButton" class="btn btn-primary"
+						onclick="dologin()">登录</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end 登录 -->
+	<!-- 注册模拟框 -->
+	<div class="modal fade bs-example-modal-sm" id="regModal"
+		tabindex="-1" role="ialog" aria-labelledby="loginModelTitle">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
+					<h4 class="modal-title" id="loginModelTitle">
+						<span class="glyphicon glyphicon-user"></span> 用户注册
+					</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group" id="accountidbox">
+							<label for="accountid" id="accountidtitle"
+								class="col-sm-4 control-label">账户:</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="accountid"
+									placeholder="请输入账户……">
+							</div>
+						</div>
+						<div class="form-group" id="accountpwdbox">
+							<label for="accountpwd" id="accountpwdtitle"
+								class="col-sm-4 control-label">密码:</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="accountpwd"
+									placeholder="请输入密码……">
+							</div>
+						</div>
+						<div class="form-group" id="accountpwdbox">
+							<label for="accountpwd" id="accountpwdtitle"
+								class="col-sm-4 control-label">确认密码:</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="accountpwd"
+									placeholder="请输入确认密码……">
+							</div>
+						</div>
+						<div class="form-group" id="accountpwdbox">
+							<label for="accountpwd" id="accountpwdtitle"
+								class="col-sm-4 control-label">邮箱:</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="accountpwd"
+									placeholder="请输入邮箱……">
+							</div>
+						</div>
+						<div class="form-group hidden" id="vercodebox"></div>
+						<div id="alertbox" role="alert"></div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" id="dologinButton" class="btn btn-primary"
+						onclick="dologin()">注册</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+  $(function () {
+    $('.code').createCode({
+      len:4
+    });
+  });
+	
+
+	
+ /* $('.input-code').blur(function () {
+    if($(this).val().toLowerCase()!==$('.code').children('input').val().toLowerCase()){
+      alert('验证码不正确')
+    }else{
+      alert('验证通过')
+    }
+  })*/
+</script>
+</body>
+</html>
